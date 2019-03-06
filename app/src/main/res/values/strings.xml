@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">LTC Reiki Clock</string>
+    <string name="app_info">About LTC Reiki Clock</string>
+    <string name="action_delete_item">Delete Item? This can\'t be undone.</string>
+    <string name="action_delete">PROCEED</string>
+
+    <!-- used as tags for shared element transitions -->
+    <string name="transition_drawable">drawable</string>
+    <string name="transition_message">message</string>
+    <string name="transition_time_and_date">date</string>
+    <string name="title_toolbar_position_list">Position List</string>
+    <string name="title_toolbar_create_reiki">Create Reiki</string>
+    <string name="title_toolbar_create_position">Create Position</string>
+    <string name="reiki_title">Title</string>
+    <string name="reiki_description">Description</string>
+    <string name="reiki_stop_button">Stop Reiki</string>
+    <string name="reiki_play_pause_button">Play/Pause Reiki</string>
+    <string name="reiki_edit">Edit Reiki</string>
+    <string name="position_title">Title</string>
+    <string name="position_duration">Duration (mm:ss)</string>
+    <string name="position_create">Create Position</string>
+    <string name="position_edit">Edit Position</string>
+    <string name="to_position_list">To Position List</string>
+    <string name="prompt_new_position">Hit + to proceed</string>
+    <string name="back">Back</string>
+    <string name="done">Done</string>
+    <string name="play_music">Play music</string>
+    <string name="ad_text">Full Version Available >></string>
+    <string name="ad_button_text">Buy Now!</string>
+    <string name="error_no_extra_found">Error Retrieving Item Detail</string>
+    <string name="item_deleted">Item Deleted</string>
+    <string name="action_undo">UNDO</string>
+    <string name="action_undo_delete">Item Deleted. Undo?</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_test_with_fragment">TestActivityWithFragment</string>
+    <string name="action_settings">Settings</string>
+</resources>

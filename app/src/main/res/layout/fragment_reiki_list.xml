@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_fragment_reiki_list"
+    tools:context="com.learnteachcenter.ltcreikiclock.reiki.ReikiListActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tlb_reiki_list_activity"
+        style="@style/Toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:paddingEnd="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingStart="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_create_new_reiki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_add_black_24dp"
+        app:elevation="6dp"
+        android:tint="@android:color/white"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:rippleColor="@color/colorTransparentBlack"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rec_reiki_list_activity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tlb_reiki_list_activity"/>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-1046951996868755/5163044968">
+    </com.google.android.gms.ads.AdView>
+
+    <!--<Button-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:text="Force Crash!"-->
+    <!--android:onClick="forceCrash"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_centerHorizontal="true" />-->
+
+
+
+</android.support.constraint.ConstraintLayout>

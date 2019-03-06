@@ -1,0 +1,5 @@
+LTC Reiki Clock FREE
+https://s3.us-east-2.amazonaws.com/ltcclock/Public/reiki/LTC-Reiki-Clock-FREE.apk
+
+LTC Reiki Clock
+https://s3.us-east-2.amazonaws.com/ltcclock/Public/reiki/LTC-Reiki-Clock.apk

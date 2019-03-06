@@ -1,0 +1,101 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // These docs use an open ended version so that our plugin
+        // can be updated quickly in response to Android tooling updates
+
+        // We recommend changing it to the latest version from our changelog:
+        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public'}
+}
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'Android Signing Key'
+            keyPassword 'aye13m'
+            storeFile file('/docs/signing/android-signing.jks')
+            storePassword 'aye13m'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.learnteachcenter.ltcreikiclockv3"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 7
+        versionName "1.3"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "default"
+    productFlavors {
+        freeFlavor {
+            applicationId "com.learnteachcenter.ltcreikiclockv3.free"
+        }
+
+        paidFlavor {
+            applicationId "com.learnteachcenter.ltcreikiclockv3.paid"
+        }
+    }
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+    //had to add this due to some issue with Espresso
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+    compileOptions.incremental = false
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //D2
+    compile "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    //instead of check Project level build.gradle for version values
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+    compile "android.arch.lifecycle:extensions:$rootProject.archLifecycleExtensionsVersion"
+    compile "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomCompilerVersion"
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'org.mockito:mockito-core:2.8.9'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.google.android.gms:play-services-ads:11.8.0'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
+        transitive = true;
+    }
+}

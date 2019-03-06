@@ -1,0 +1,7 @@
+This app is a clock for Reiki practitioners. 
+
+It provides a set of timers. Each timer corresponds to each hand position. A reminder sound plays when a timer finishes so that you know when to move your hand to the next position. Background music also plays; you can turn it on or off.
+
+You can create your own set of timers. You can create as many timer sets as you need to suit each client. 
+
+A default timer set includes 7 timers for 7 Chakras. Each timer is 3 minutes long. You may also change duration of each timer.
