@@ -1,4 +1,4 @@
-package com.learnteachcenter.ltcreikiclock.data;
+package com.learnteachcenter.ltcreikiclock.data.source.local;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -7,8 +7,13 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import com.learnteachcenter.ltcreikiclock.data.Position;
+import com.learnteachcenter.ltcreikiclock.data.Reiki;
+
 import java.util.List;
 import java.util.UUID;
+
+import io.reactivex.Single;
 
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
@@ -19,21 +24,12 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 @Dao
 public interface ReikiDao {
 
+    @Query("SELECT * FROM Reiki ORDER BY seqNo")
+    Single<List<Reiki>> getReikis();
+
     @Query("SELECT * FROM Reiki WHERE id = :id")
     LiveData<Reiki> getReikiById(String id);
 
-    /**
-     * Get all entities of type Reiki
-     * @return
-     */
-    @Query("SELECT * FROM Reiki ORDER BY seqNo")
-    LiveData<List<Reiki>> getReikis();
-
-
-    /**
-     * Insert a new Reiki
-     * @param reiki
-     */
     @Insert(onConflict = REPLACE)
     Long insertReiki(Reiki reiki);
 

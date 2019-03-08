@@ -20,26 +20,17 @@ package com.learnteachcenter.ltcreikiclock.dependencyinjection;
 
 import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
-import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
-import android.database.SQLException;
-import android.os.AsyncTask;
-import android.util.Log;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 
-import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.data.ReikiDao;
-import com.learnteachcenter.ltcreikiclock.data.ReikiDatabase;
-import com.learnteachcenter.ltcreikiclock.data.ReikiRepository;
+import com.learnteachcenter.ltcreikiclock.data.source.local.ReikiDao;
+import com.learnteachcenter.ltcreikiclock.data.source.local.ReikiDatabase;
+import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;
 import com.learnteachcenter.ltcreikiclock.viewmodel.CustomViewModelFactory;
-
-import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by R_KAY on 8/18/2017.
@@ -56,12 +47,6 @@ public class RoomModule {
                     "Reiki.db"
                 )
                 .build();
-    }
-
-    @Provides
-    @Singleton
-    ReikiRepository provideReikiRepository(ReikiDao listItemDao){
-        return new ReikiRepository(listItemDao);
     }
 
     @Provides

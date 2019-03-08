@@ -24,7 +24,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import com.learnteachcenter.ltcreikiclock.data.ReikiRepository;
+import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;
 
 /**
  * Created by R_KAY on 8/17/2017.

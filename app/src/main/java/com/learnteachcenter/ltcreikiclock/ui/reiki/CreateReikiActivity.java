@@ -1,14 +1,13 @@
-package com.learnteachcenter.ltcreikiclock.reiki;
+package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.util.BaseActivity;
-import com.learnteachcenter.ltcreikiclock.util.IntentExtraNames;
+import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
+import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 
 public class CreateReikiActivity extends BaseActivity {
 
@@ -35,15 +34,19 @@ public class CreateReikiActivity extends BaseActivity {
             fragment = CreateReikiFragment.newInstance();
         }
 
-        fragment.setSeqNo(i.getIntExtra(IntentExtraNames.NEW_REIKI_SEQNO, 0));
+        int reikiSeqNo = 0;
+
+        fragment.setSeqNo(i.getIntExtra(IntentExtraNames.NEW_REIKI_SEQNO, reikiSeqNo));
 
         // If user is editing Reiki info, extras will be passed.
         if(i.hasExtra(IntentExtraNames.EXTRA_REIKI_ID)
+                && i.hasExtra(IntentExtraNames.EXTRA_REIKI_SEQ_NO)
                 && i.hasExtra(IntentExtraNames.EXTRA_REIKI_TITLE)
                 && i.hasExtra(IntentExtraNames.EXTRA_REIKI_DESCRIPTION)
                 && i.hasExtra(IntentExtraNames.EXTRA_REIKI_PLAY_MUSIC)) {
 
             fragment.setReikiInfo(i.getStringExtra(IntentExtraNames.EXTRA_REIKI_ID),
+                                    i.getIntExtra(IntentExtraNames.NEW_REIKI_SEQNO, reikiSeqNo),
                                     i.getStringExtra(IntentExtraNames.EXTRA_REIKI_TITLE),
                                     i.getStringExtra(IntentExtraNames.EXTRA_REIKI_DESCRIPTION),
                     i.getBooleanExtra(IntentExtraNames.EXTRA_REIKI_PLAY_MUSIC, true));

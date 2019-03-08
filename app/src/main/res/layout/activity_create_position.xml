@@ -5,6 +5,6 @@
              android:id="@+id/root_activity_create_position"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.learnteachcenter.ltcreikiclock.position.CreatePositionActivity">
+             tools:context=".ui.position.CreatePositionActivity">
 
 </FrameLayout>

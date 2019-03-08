@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".reiki.ReikiListActivity"
+        <activity android:name=".ui.reiki.ReikiListActivity"
                     android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,16 +24,16 @@
             android:name="io.fabric.ApiKey"
             android:value="248192f03d39946b6fea620a627f288f58828ecf"
             />
-        <activity android:name=".position.PositionListActivity"
+        <activity android:name=".ui.position.PositionListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".CrashActivity">
+        <activity android:name=".ui.CrashActivity">
         </activity>
-        <activity android:name=".reiki.CreateReikiActivity"
+        <activity android:name=".ui.reiki.CreateReikiActivity"
                   android:windowSoftInputMode="stateVisible">
         </activity>
-        <activity android:name=".position.CreatePositionActivity"
+        <activity android:name=".ui.position.CreatePositionActivity"
                     android:launchMode="singleTop"
                   android:windowSoftInputMode="stateVisible">
         </activity>

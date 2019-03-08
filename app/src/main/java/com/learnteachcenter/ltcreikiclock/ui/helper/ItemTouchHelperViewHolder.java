@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.learnteachcenter.ltcreikiclock.helper;
+package com.learnteachcenter.ltcreikiclock.ui.helper;
 
 import android.support.v7.widget.helper.ItemTouchHelper;
 

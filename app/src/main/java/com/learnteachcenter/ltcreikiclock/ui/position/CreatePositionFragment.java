@@ -1,15 +1,13 @@
-package com.learnteachcenter.ltcreikiclock.position;
+package com.learnteachcenter.ltcreikiclock.ui.position;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,7 +16,7 @@ import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Position;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.util.IntentExtraNames;
+import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 import com.learnteachcenter.ltcreikiclock.viewmodel.NewReikiViewModel;
 
 import javax.inject.Inject;
@@ -42,13 +40,21 @@ public class CreatePositionFragment extends Fragment {
 
     public CreatePositionFragment() { }
 
-    public static CreatePositionFragment newInstance(String reikiId, String reikiTitle, String reikiDescription, boolean reikiPlayMusic,
-                                                     String positionId, int seqNo, String positionTitle, String positionDuration ) {
+    public static CreatePositionFragment newInstance(String reikiId,
+                                                     int reikiSeqNo,
+                                                     String reikiTitle,
+                                                     String reikiDescription,
+                                                     boolean reikiPlayMusic,
+                                                     String positionId,
+                                                     int seqNo,
+                                                     String positionTitle,
+                                                     String positionDuration ) {
         CreatePositionFragment fragment = new CreatePositionFragment();
         Bundle args = new Bundle();
 
         // Put Reiki info
         args.putString(IntentExtraNames.EXTRA_REIKI_ID, reikiId);
+        args.putInt(IntentExtraNames.EXTRA_REIKI_SEQ_NO, reikiSeqNo);
         args.putString(IntentExtraNames.EXTRA_REIKI_TITLE, reikiTitle);
         args.putString(IntentExtraNames.EXTRA_REIKI_DESCRIPTION, reikiDescription);
         args.putBoolean(IntentExtraNames.EXTRA_REIKI_PLAY_MUSIC, reikiPlayMusic);
@@ -77,6 +83,7 @@ public class CreatePositionFragment extends Fragment {
         Bundle args = getArguments();
 
         this.mReiki = new Reiki(args.getString(IntentExtraNames.EXTRA_REIKI_ID),
+                                args.getInt(IntentExtraNames.EXTRA_REIKI_SEQ_NO),
                                 args.getString(IntentExtraNames.EXTRA_REIKI_TITLE),
                                 args.getString(IntentExtraNames.EXTRA_REIKI_DESCRIPTION),
                                 args.getBoolean(IntentExtraNames.EXTRA_REIKI_PLAY_MUSIC));

@@ -1,4 +1,4 @@
-package com.learnteachcenter.ltcreikiclock.util;
+package com.learnteachcenter.ltcreikiclock.ui;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

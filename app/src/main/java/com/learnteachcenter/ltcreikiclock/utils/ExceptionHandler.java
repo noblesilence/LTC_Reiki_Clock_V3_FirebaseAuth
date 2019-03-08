@@ -1,4 +1,4 @@
-package com.learnteachcenter.ltcreikiclock;
+package com.learnteachcenter.ltcreikiclock.utils;
 /*
  * Created by aye2m on 6/28/16.
  */
@@ -6,6 +6,8 @@ package com.learnteachcenter.ltcreikiclock;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
+
+import com.learnteachcenter.ltcreikiclock.ui.CrashActivity;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

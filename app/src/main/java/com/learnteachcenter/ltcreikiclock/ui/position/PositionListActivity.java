@@ -1,4 +1,4 @@
-package com.learnteachcenter.ltcreikiclock.position;
+package com.learnteachcenter.ltcreikiclock.ui.position;
 
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
@@ -38,14 +38,14 @@ import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Position;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.helper.ItemTouchHelperAdapter;
-import com.learnteachcenter.ltcreikiclock.helper.ItemTouchHelperViewHolder;
-import com.learnteachcenter.ltcreikiclock.helper.OnStartDragListener;
-import com.learnteachcenter.ltcreikiclock.helper.SimpleItemTouchHelperCallback;
-import com.learnteachcenter.ltcreikiclock.reiki.CreateReikiActivity;
-import com.learnteachcenter.ltcreikiclock.reiki.ReikiListActivity;
-import com.learnteachcenter.ltcreikiclock.util.BaseActivity;
-import com.learnteachcenter.ltcreikiclock.util.IntentExtraNames;
+import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperAdapter;
+import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperViewHolder;
+import com.learnteachcenter.ltcreikiclock.ui.helper.OnStartDragListener;
+import com.learnteachcenter.ltcreikiclock.ui.helper.SimpleItemTouchHelperCallback;
+import com.learnteachcenter.ltcreikiclock.ui.reiki.CreateReikiActivity;
+import com.learnteachcenter.ltcreikiclock.ui.reiki.ReikiListActivity;
+import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
+import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 import com.learnteachcenter.ltcreikiclock.viewmodel.ReikiCollectionViewModel;
 
 import java.util.Arrays;
@@ -758,7 +758,8 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
             String reikiDescription = i.getStringExtra(IntentExtraNames.EXTRA_REIKI_DESCRIPTION);
             boolean reikiPlayMusic = i.getBooleanExtra(IntentExtraNames.EXTRA_REIKI_PLAY_MUSIC, true);
 
-            reiki = new Reiki(reikiId, reikiTitle, reikiDescription, reikiPlayMusic);
+            // TODO: update seqNo
+            reiki = new Reiki(reikiId, 1, reikiTitle, reikiDescription, reikiPlayMusic);
         }
         else {
             finish();

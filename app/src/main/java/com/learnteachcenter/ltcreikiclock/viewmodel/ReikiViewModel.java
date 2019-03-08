@@ -22,9 +22,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.data.ReikiRepository;
-
-import java.util.UUID;
+import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;
 
 /**
  * Created by R_KAY on 8/3/2017.

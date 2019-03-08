@@ -19,14 +19,21 @@
 package com.learnteachcenter.ltcreikiclock.viewmodel;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import com.learnteachcenter.ltcreikiclock.data.Position;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.data.ReikiRepository;
+import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -39,15 +46,68 @@ import com.learnteachcenter.ltcreikiclock.data.ReikiRepository;
 
 public class ReikiCollectionViewModel extends ViewModel {
 
+    // Repository
     private ReikiRepository repository;
 
+    private MutableLiveData<List<Reiki>> reikisResult = new MutableLiveData<>();
+    private MutableLiveData<String> reikisError = new MutableLiveData<>();
+    private MutableLiveData<Boolean> reikisLoader = new MutableLiveData<>();
+    private DisposableObserver<List<Reiki>> disposableObserver;
+
+    // Constructor
     ReikiCollectionViewModel(ReikiRepository repository) {
         this.repository = repository;
     }
 
-    // Reikis
+    public LiveData<List<Reiki>> reikisResult() {
+        return reikisResult;
+    }
 
-    public LiveData<List<Reiki>> getReikis() {
+    public LiveData<String> reikisError() {
+        return reikisError;
+    }
+
+    public LiveData<Boolean> reikisLoader(){
+        return reikisLoader;
+    }
+
+    public void loadReikis() {
+        DisposableObserver<List<Reiki>> disposableObserver = new
+                DisposableObserver<List<Reiki>>() {
+                    @Override
+                    public void onNext(List<Reiki> reikis) {
+                        reikisResult.postValue(reikis);
+                        reikisLoader.postValue(false);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        reikisError.postValue(e.getMessage());
+                        reikisLoader.postValue(false);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                };
+
+        repository.getListOfReikis()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .debounce(400, TimeUnit.MILLISECONDS)
+                .subscribe(disposableObserver);
+    }
+
+    public void disposeElements(){
+        if( disposableObserver != null &&
+        !disposableObserver.isDisposed()) {
+            disposableObserver.dispose();
+        }
+    }
+
+    // Reikis
+    public Observable<List<Reiki>> getReikis() {
         return repository.getListOfReikis();
     }
 
@@ -60,7 +120,7 @@ public class ReikiCollectionViewModel extends ViewModel {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            repository.populateReikiDatabase();
+//            repository.populateReikiDatabase();
             return null;
         }
     }

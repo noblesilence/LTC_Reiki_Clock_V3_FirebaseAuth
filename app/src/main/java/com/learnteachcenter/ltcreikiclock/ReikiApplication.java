@@ -23,6 +23,7 @@ import android.app.Application;
 import com.learnteachcenter.ltcreikiclock.dependencyinjection.ApplicationComponent;
 import com.learnteachcenter.ltcreikiclock.dependencyinjection.ApplicationModule;
 import com.learnteachcenter.ltcreikiclock.dependencyinjection.DaggerApplicationComponent;
+import com.learnteachcenter.ltcreikiclock.dependencyinjection.NetModule;
 import com.learnteachcenter.ltcreikiclock.dependencyinjection.RoomModule;
 
 /**
@@ -49,6 +50,7 @@ public class ReikiApplication extends Application {
                 .builder()
                 .applicationModule(new ApplicationModule(this))
                 .roomModule(new RoomModule(this))
+                .netModule(new NetModule(BuildConfig.URL))
                 .build();
 
     }

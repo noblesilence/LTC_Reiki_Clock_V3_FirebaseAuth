@@ -23,6 +23,12 @@ import android.app.Application;
 import dagger.Module;
 import dagger.Provides;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
+import com.learnteachcenter.ltcreikiclock.Utils;
+import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;
+import com.learnteachcenter.ltcreikiclock.data.source.local.ReikiDao;
+import com.learnteachcenter.ltcreikiclock.data.source.remote.ApiInterface;
+
+import javax.inject.Singleton;
 
 /**
  *
@@ -32,6 +38,7 @@ import com.learnteachcenter.ltcreikiclock.ReikiApplication;
 @Module
 public class ApplicationModule {
     private final ReikiApplication application;
+
     public ApplicationModule(ReikiApplication application) {
         this.application = application;
     }
@@ -45,4 +52,12 @@ public class ApplicationModule {
     Application provideApplication(){
         return application;
     }
+
+//    @Provides
+//    @Singleton
+//    ReikiRepository provideReikiRepository(ApiInterface apiInterface,
+//                                           ReikiDao reikiDao,
+//                                           Utils utils){
+//        return new ReikiRepository(apiInterface, reikiDao, utils);
+//    }
 }

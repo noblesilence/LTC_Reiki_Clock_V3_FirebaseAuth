@@ -16,7 +16,7 @@
  *
  */
 
-package com.learnteachcenter.ltcreikiclock.util;
+package com.learnteachcenter.ltcreikiclock.utils;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

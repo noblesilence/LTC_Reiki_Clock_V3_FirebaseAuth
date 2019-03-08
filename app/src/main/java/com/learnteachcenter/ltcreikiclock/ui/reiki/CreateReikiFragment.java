@@ -1,10 +1,8 @@
-package com.learnteachcenter.ltcreikiclock.reiki;
+package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,9 +17,11 @@ import android.widget.Toast;
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.position.PositionListActivity;
-import com.learnteachcenter.ltcreikiclock.util.IntentExtraNames;
+import com.learnteachcenter.ltcreikiclock.ui.position.PositionListActivity;
+import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 import com.learnteachcenter.ltcreikiclock.viewmodel.NewReikiViewModel;
+
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -55,8 +55,8 @@ public class CreateReikiFragment extends Fragment {
         this.seqNo = seqNo;
     }
 
-    public void setReikiInfo(String id, String title, String description, boolean playMusic) {
-        this.mReiki = new Reiki(id, title, description, playMusic);
+    public void setReikiInfo(String id, int seqNo, String title, String description, boolean playMusic) {
+        this.mReiki = new Reiki(id, seqNo, title, description, playMusic);
     }
 
     @Override
@@ -133,10 +133,11 @@ public class CreateReikiFragment extends Fragment {
 
                 } else {
                     Reiki reiki = new Reiki(
+                            UUID.randomUUID().toString(),
+                            seqNo,
                             titleInput.getText().toString(),
                             descriptionInput.getText().toString(),
-                            playMusicCheckbox.isChecked(),
-                            seqNo
+                            playMusicCheckbox.isChecked()
                     );
 
                     if(editMode) {

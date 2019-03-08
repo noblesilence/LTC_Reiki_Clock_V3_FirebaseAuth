@@ -1,4 +1,4 @@
-package com.learnteachcenter.ltcreikiclock.util;
+package com.learnteachcenter.ltcreikiclock.utils;
 
 import android.support.v7.util.DiffUtil;
 

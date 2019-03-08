@@ -1,8 +1,7 @@
-package com.learnteachcenter.ltcreikiclock.reiki;
+package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 
 import android.app.Activity;
-import android.arch.lifecycle.LifecycleFragment;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -22,10 +21,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -45,12 +41,12 @@ import com.learnteachcenter.ltcreikiclock.Constants;
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.helper.ItemTouchHelperAdapter;
-import com.learnteachcenter.ltcreikiclock.helper.ItemTouchHelperViewHolder;
-import com.learnteachcenter.ltcreikiclock.helper.OnStartDragListener;
-import com.learnteachcenter.ltcreikiclock.helper.SimpleItemTouchHelperCallback;
-import com.learnteachcenter.ltcreikiclock.position.PositionListActivity;
-import com.learnteachcenter.ltcreikiclock.util.IntentExtraNames;
+import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperAdapter;
+import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperViewHolder;
+import com.learnteachcenter.ltcreikiclock.ui.helper.OnStartDragListener;
+import com.learnteachcenter.ltcreikiclock.ui.helper.SimpleItemTouchHelperCallback;
+import com.learnteachcenter.ltcreikiclock.ui.position.PositionListActivity;
+import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 import com.learnteachcenter.ltcreikiclock.viewmodel.ReikiCollectionViewModel;
 
 /**
@@ -105,7 +101,7 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
         reikiCollectionViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(ReikiCollectionViewModel.class);
 
-        reikiCollectionViewModel.getReikis().observe(this, new Observer<List<Reiki>>() {
+        reikiCollectionViewModel.reikisResult().observe(this, new Observer<List<Reiki>>() {
             @Override
             public void onChanged(@Nullable List<Reiki> reikis) {
                 //if list is empty, repopulate Database

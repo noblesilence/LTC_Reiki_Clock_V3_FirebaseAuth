@@ -20,10 +20,10 @@ package com.learnteachcenter.ltcreikiclock.dependencyinjection;
 
 import android.app.Application;
 
-import com.learnteachcenter.ltcreikiclock.position.CreatePositionFragment;
-import com.learnteachcenter.ltcreikiclock.position.PositionListActivity;
-import com.learnteachcenter.ltcreikiclock.reiki.CreateReikiFragment;
-import com.learnteachcenter.ltcreikiclock.reiki.ReikiListFragment;
+import com.learnteachcenter.ltcreikiclock.ui.position.CreatePositionFragment;
+import com.learnteachcenter.ltcreikiclock.ui.position.PositionListActivity;
+import com.learnteachcenter.ltcreikiclock.ui.reiki.CreateReikiFragment;
+import com.learnteachcenter.ltcreikiclock.ui.reiki.ReikiListFragment;
 
 import javax.inject.Singleton;
 
@@ -36,7 +36,11 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {ApplicationModule.class, RoomModule.class})
+@Component(modules = {
+    ApplicationModule.class,
+    RoomModule.class,
+    NetModule.class
+})
 public interface ApplicationComponent {
 
     void inject(ReikiListFragment reikiListFragment);

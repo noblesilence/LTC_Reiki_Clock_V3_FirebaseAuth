@@ -1,4 +1,4 @@
-package com.learnteachcenter.ltcreikiclock.helper;
+package com.learnteachcenter.ltcreikiclock.ui.helper;
 
 import android.support.v7.widget.RecyclerView;
 

@@ -1,17 +1,12 @@
-package com.learnteachcenter.ltcreikiclock.position;
+package com.learnteachcenter.ltcreikiclock.ui.position;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.ImageButton;
 
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.reiki.CreateReikiFragment;
-import com.learnteachcenter.ltcreikiclock.util.BaseActivity;
-import com.learnteachcenter.ltcreikiclock.util.IntentExtraNames;
+import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
+import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 
 public class CreatePositionActivity extends BaseActivity {
 
@@ -25,6 +20,7 @@ public class CreatePositionActivity extends BaseActivity {
         Intent i = getIntent();
 
         if(i.hasExtra(IntentExtraNames.EXTRA_REIKI_ID)
+                && i.hasExtra(IntentExtraNames.EXTRA_REIKI_SEQ_NO)
                 && i.hasExtra(IntentExtraNames.EXTRA_REIKI_ID)
                 && i.hasExtra(IntentExtraNames.EXTRA_REIKI_TITLE)
                 && i.hasExtra(IntentExtraNames.EXTRA_REIKI_DESCRIPTION)
@@ -32,6 +28,7 @@ public class CreatePositionActivity extends BaseActivity {
                 && i.hasExtra(IntentExtraNames.EXTRA_POSITION_SEQ_NO)) {
 
             String reikiId = i.getStringExtra(IntentExtraNames.EXTRA_REIKI_ID);
+            int reikiSeqNo = i.getIntExtra(IntentExtraNames.EXTRA_REIKI_SEQ_NO, 0);
             String reikiTitle = i.getStringExtra(IntentExtraNames.EXTRA_REIKI_TITLE);
             String reikiDescription = i.getStringExtra(IntentExtraNames.EXTRA_REIKI_DESCRIPTION);
             boolean reikiPlayMusic = i.getBooleanExtra(IntentExtraNames.EXTRA_REIKI_PLAY_MUSIC, true);
@@ -46,8 +43,15 @@ public class CreatePositionActivity extends BaseActivity {
             CreatePositionFragment fragment = (CreatePositionFragment) manager.findFragmentByTag(CREATE_POSITION_FRAG);
 
             if (fragment == null) {
-                fragment = CreatePositionFragment.newInstance(reikiId, reikiTitle, reikiDescription, reikiPlayMusic,
-                                                                positionId, positionSeqNo, positionTitle, positionDuration);
+                fragment = CreatePositionFragment.newInstance(reikiId,
+                        reikiSeqNo,
+                        reikiTitle,
+                        reikiDescription,
+                        reikiPlayMusic,
+                        positionId,
+                        positionSeqNo,
+                        positionTitle,
+                        positionDuration);
             }
 
             addFragmentToActivity(manager,

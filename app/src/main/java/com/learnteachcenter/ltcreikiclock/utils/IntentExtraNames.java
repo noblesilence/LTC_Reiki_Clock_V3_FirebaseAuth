@@ -1,4 +1,4 @@
-package com.learnteachcenter.ltcreikiclock.util;
+package com.learnteachcenter.ltcreikiclock.utils;
 
 /**
  * Created by aye2m on 1/11/18.
@@ -7,6 +7,7 @@ package com.learnteachcenter.ltcreikiclock.util;
 public class IntentExtraNames {
     public static final String NEW_REIKI_SEQNO = "NEW_REIKI_SEQNO";
     public static final String EXTRA_REIKI_ID = "EXTRA_REIKI_ID";
+    public static final String EXTRA_REIKI_SEQ_NO = "EXTRA_REIKI_SEQ_NO";
     public static final String EXTRA_REIKI_TITLE = "EXTRA_REIKI_TITLE";
     public static final String EXTRA_REIKI_DESCRIPTION = "EXTRA_REIKI_DESCRIPTION";
     public static final String EXTRA_REIKI_PLAY_MUSIC = "EXTRA_REIKI_PLAY_MUSIC";

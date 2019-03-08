@@ -23,7 +23,7 @@ import android.os.AsyncTask;
 
 import com.learnteachcenter.ltcreikiclock.data.Position;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
-import com.learnteachcenter.ltcreikiclock.data.ReikiRepository;
+import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;
 
 /**
  * Created by R_KAY on 8/11/2017.

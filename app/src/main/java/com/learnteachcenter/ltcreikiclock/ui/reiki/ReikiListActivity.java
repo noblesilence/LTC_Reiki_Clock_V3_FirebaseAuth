@@ -40,25 +40,17 @@
  * https://stackoverflow.com/questions/18830205/application-crash-with-android-app-application-cannot-be-cast-to
  * */
 
-package com.learnteachcenter.ltcreikiclock.reiki;
+package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
-import com.google.android.gms.ads.MobileAds;
-import com.learnteachcenter.ltcreikiclock.Constants;
-import com.learnteachcenter.ltcreikiclock.ExceptionHandler;
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.util.BaseActivity;
+import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
