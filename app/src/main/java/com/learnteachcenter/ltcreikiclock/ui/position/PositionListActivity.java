@@ -223,7 +223,7 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
             });
         }
         else {
-            fabAdd.setVisibility(View.INVISIBLE);
+            fabAdd.hide();
         }
     }
 
@@ -256,10 +256,14 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
 
     private void showHideAddButtonBasedOnProductFlavor(FloatingActionButton fabAdd, int visibility) {
         if(Constants.type == Constants.Type.PAID) {
-            fabAdd.setVisibility(visibility);
+            if(visibility == View.VISIBLE) {
+                fabAdd.show();
+            } else {
+                fabAdd.hide();
+            }
         }
         else {
-            fabAdd.setVisibility(View.INVISIBLE);
+            fabAdd.hide();
         }
     }
 
@@ -562,15 +566,15 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
 
     private void setVisibilityPlayStopPrompt(){
         if(listOfPositions.size() > 0) {
-            fabPlayPause.setVisibility(View.VISIBLE);
-            fabStop.setVisibility(View.VISIBLE);
+            fabPlayPause.show();
+            fabStop.show();
 
             recyclerView.setVisibility(View.VISIBLE);
             prompt.setVisibility(View.INVISIBLE);
         }
         else {
-            fabPlayPause.setVisibility(View.INVISIBLE);
-            fabStop.setVisibility(View.INVISIBLE);
+            fabPlayPause.hide();
+            fabStop.hide();
 
             recyclerView.setVisibility(View.INVISIBLE);
             prompt.setVisibility(View.VISIBLE);

@@ -7,13 +7,13 @@ import com.squareup.moshi.Json
 import java.io.Serializable
 
 @Entity(
-        tableName = "reikis"
+        tableName = "Reiki"
 )
 
 data class Reiki (
         @Json(name = "id")
         @PrimaryKey
-        @ColumnInfo(name = "id")
+        @ColumnInfo(name = "id", index = true)
         var id: String,
 
         @Json(name="seqNo")

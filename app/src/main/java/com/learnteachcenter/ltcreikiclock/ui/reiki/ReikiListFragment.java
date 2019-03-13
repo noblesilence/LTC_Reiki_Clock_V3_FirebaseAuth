@@ -34,9 +34,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.MobileAds;
 import com.learnteachcenter.ltcreikiclock.Constants;
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
@@ -69,7 +69,7 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
     private CustomAdapter adapter;
     private ItemTouchHelper mItemTouchHelper;
     SimpleItemTouchHelperCallback mItemTouchHelperCallback;
-    private AdView mAdView;
+//    private AdView mAdView;
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
@@ -134,8 +134,8 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
         FloatingActionButton fabAdd = v.findViewById(R.id.fab_create_new_reiki);
         setupAddButtonBasedOnProductFlavor(fabAdd);
 
-        AdView adView = v.findViewById(R.id.adView);
-        setupAdBasedOnProductFlavor(adView);
+//        AdView adView = v.findViewById(R.id.adView);
+//        setupAdBasedOnProductFlavor(adView);
 
         return v;
     }
@@ -154,18 +154,18 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
         }
     }
 
-    private void setupAdBasedOnProductFlavor(AdView adView) {
-        if(Constants.type == Constants.Type.PAID) {
-            adView.setVisibility(View.GONE);
-        }
-        else {
-            MobileAds.initialize(getContext(), "ca-app-pub-1046951996868755~3901934187");
-            adView.setVisibility(View.VISIBLE);
-
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
-        }
-    }
+//    private void setupAdBasedOnProductFlavor(AdView adView) {
+//        if(Constants.type == Constants.Type.PAID) {
+//            adView.setVisibility(View.GONE);
+//        }
+//        else {
+//            MobileAds.initialize(getContext(), "ca-app-pub-1046951996868755~3901934187");
+//            adView.setVisibility(View.VISIBLE);
+//
+//            AdRequest adRequest = new AdRequest.Builder().build();
+//            adView.loadAd(adRequest);
+//        }
+//    }
 
     @Override
     public void onResume() {

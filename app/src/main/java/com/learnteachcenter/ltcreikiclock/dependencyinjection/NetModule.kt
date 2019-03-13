@@ -1,5 +1,6 @@
 package com.learnteachcenter.ltcreikiclock.dependencyinjection
 
+import com.learnteachcenter.ltcreikiclock.Utils
 import com.learnteachcenter.ltcreikiclock.data.source.remote.ApiInterface
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
@@ -37,4 +38,6 @@ class NetModule (private val baseUrl: String) {
     fun providesApiInterface(retrofit: Retrofit): ApiInterface = retrofit.create(
             ApiInterface::class.java
     )
+
+
 }

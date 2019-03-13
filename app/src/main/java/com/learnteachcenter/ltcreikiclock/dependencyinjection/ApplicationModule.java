@@ -53,6 +53,7 @@ public class ApplicationModule {
         return application;
     }
 
+
 //    @Provides
 //    @Singleton
 //    ReikiRepository provideReikiRepository(ApiInterface apiInterface,

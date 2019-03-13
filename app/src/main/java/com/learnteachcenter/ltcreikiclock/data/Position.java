@@ -38,7 +38,7 @@ public class Position {
     String reikiId; // Foreign Key
 
     @NonNull
-    @PrimaryKey String positionId; // Primary Key
+    @PrimaryKey public String positionId; // Primary Key
     String title;
     String duration;
     @Ignore long durationSeconds;

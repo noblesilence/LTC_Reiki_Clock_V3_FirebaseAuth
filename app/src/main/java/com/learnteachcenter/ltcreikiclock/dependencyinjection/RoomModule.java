@@ -27,6 +27,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
+import com.learnteachcenter.ltcreikiclock.Utils;
 import com.learnteachcenter.ltcreikiclock.data.source.local.ReikiDao;
 import com.learnteachcenter.ltcreikiclock.data.source.local.ReikiDatabase;
 import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;
@@ -65,5 +66,11 @@ public class RoomModule {
     @Singleton
     ViewModelProvider.Factory provideViewModelFactory(ReikiRepository repository){
         return new CustomViewModelFactory(repository);
+    }
+
+    @Provides
+    @Singleton
+    Utils provideUtils(Application application) {
+        return new Utils(application);
     }
 }
