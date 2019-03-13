@@ -21,6 +21,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,8 @@ import com.learnteachcenter.ltcreikiclock.viewmodel.ReikiCollectionViewModel;
  */
 public class ReikiListFragment extends Fragment implements OnStartDragListener {
 
+    private static final String TAG = "Reiki";
+
     /*
     In order to establish seqNos based on position in Database, new Reikis are created with a
     seqNo equivalent to listOfReikis.size() + 1. We could perhaps also have the repository count
@@ -66,6 +69,7 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
 
     private LayoutInflater layoutInflater;
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
     private CustomAdapter adapter;
     private ItemTouchHelper mItemTouchHelper;
     SimpleItemTouchHelperCallback mItemTouchHelperCallback;
@@ -97,13 +101,19 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        Log.d(TAG, "onActivityCreated: ");
+
         // Set up and subscribe (observe) to the ViewModel
         reikiCollectionViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(ReikiCollectionViewModel.class);
 
+        progressBar.setVisibility(View.VISIBLE);
+        loadData();
+
         reikiCollectionViewModel.reikisResult().observe(this, new Observer<List<Reiki>>() {
             @Override
             public void onChanged(@Nullable List<Reiki> reikis) {
+                Log.d(TAG, "reikis: " + reikis);
                 //if list is empty, repopulate Database
                 if (reikis.size() < 1){
                     reikiCollectionViewModel.populateReikiDatabase();
@@ -115,6 +125,31 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
                 }
             }
         });
+
+        reikiCollectionViewModel.reikisError().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                if(s != null) {
+                    Log.d(TAG, "Error getting reikis. " + s);
+//                    Toast.makeText(this, "There is an error getting the data: " + s,
+//                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        reikiCollectionViewModel.reikisLoader().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean aBoolean) {
+                if(!aBoolean) {
+                    progressBar.setVisibility(View.GONE);
+                    Log.d(TAG, "Reiki loading finished.");
+                }
+            }
+        });
+    }
+
+    private void loadData(){
+        reikiCollectionViewModel.loadReikis();
     }
 
     @Override
@@ -129,6 +164,7 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         recyclerView = v.findViewById(R.id.rec_reiki_list_activity);
+        progressBar = v.findViewById(R.id.progressBar);
         layoutInflater = getActivity().getLayoutInflater();
 
         FloatingActionButton fabAdd = v.findViewById(R.id.fab_create_new_reiki);

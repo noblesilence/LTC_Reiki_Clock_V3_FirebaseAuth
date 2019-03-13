@@ -46,10 +46,10 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'String', 'URL', '"http://ltc-reiki.herokuapp.com/api/"'
+            buildConfigField 'String', 'URL', '"https://ov0feyufo0.execute-api.us-east-1.amazonaws.com/latest/api/"'
         }
         release {
-            buildConfigField 'String', 'URL', '"http://ltc-reiki.herokuapp.com/api/"'
+            buildConfigField 'String', 'URL', '"https://ov0feyufo0.execute-api.us-east-1.amazonaws.com/latest/api/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

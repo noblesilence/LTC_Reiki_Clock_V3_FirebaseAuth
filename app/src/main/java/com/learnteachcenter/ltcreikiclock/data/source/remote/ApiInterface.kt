@@ -5,6 +5,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface ApiInterface {
-    @GET("reikis/sample")
+    @GET("reikis/default")
     fun getSampleReikis(): Observable<List<Reiki>>
 }

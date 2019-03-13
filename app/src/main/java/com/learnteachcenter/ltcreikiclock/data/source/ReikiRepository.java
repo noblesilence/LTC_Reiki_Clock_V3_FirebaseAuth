@@ -3,6 +3,7 @@ package com.learnteachcenter.ltcreikiclock.data.source;
 import android.arch.lifecycle.LiveData;
 import android.util.Log;
 
+import com.learnteachcenter.ltcreikiclock.BuildConfig;
 import com.learnteachcenter.ltcreikiclock.Utils;
 import com.learnteachcenter.ltcreikiclock.data.Position;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
@@ -59,6 +60,7 @@ public class ReikiRepository {
     }
 
     private Observable<List<Reiki>> getReikisFromApi(){
+        Log.d(TAG, "getReikisFromApi: " + BuildConfig.URL);
         return apiInterface.getSampleReikis()
                 .doOnNext(reikis -> {
                     Log.e(TAG, "getReikisFromApi: " + reikis.size());
@@ -69,6 +71,7 @@ public class ReikiRepository {
     }
 
     private Observable<List<Reiki>> getReikisFromDb(){
+        Log.d(TAG, "getReikisFromDb: ");
         return reikiDao.getReikis()
                 .toObservable()
                 .doOnNext(reikis -> {

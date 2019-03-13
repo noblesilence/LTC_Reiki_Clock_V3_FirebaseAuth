@@ -22,6 +22,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -45,6 +46,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class ReikiCollectionViewModel extends ViewModel {
+
+    private static final String TAG = "Reiki";
 
     // Repository
     private ReikiRepository repository;
@@ -82,6 +85,7 @@ public class ReikiCollectionViewModel extends ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.d(TAG, "[ReikiCollectionViewModel] onError: " + e.getMessage());
                         reikisError.postValue(e.getMessage());
                         reikisLoader.postValue(false);
                     }

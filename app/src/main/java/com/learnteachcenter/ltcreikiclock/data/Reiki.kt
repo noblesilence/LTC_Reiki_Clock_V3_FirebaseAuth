@@ -11,7 +11,7 @@ import java.io.Serializable
 )
 
 data class Reiki (
-        @Json(name = "id")
+        @Json(name = "_id")
         @PrimaryKey
         @ColumnInfo(name = "id", index = true)
         var id: String,
