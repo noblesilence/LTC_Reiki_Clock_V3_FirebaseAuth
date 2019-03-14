@@ -65,11 +65,16 @@ public class ReikiRepository {
                 .doOnNext(reikis -> {
                     Log.e(TAG, "getReikisFromApi: " + reikis);
                     for(Reiki reiki:reikis) {
+
+                        // Insert each Reiki
                         reikiDao.insertReiki(reiki);
 
-                        Log.d(TAG, "position 0 title: " + reiki.getPositions().get(0).getTitle());
-
-                        // TODO: insert each position as well
+                        // Insert each Position
+                        List<Position> positions = reiki.getPositions();
+                        for(Position position: positions){
+                            position.setReikiId(reiki.getId());
+                            reikiDao.insertPosition(position);
+                        }
                     }
                 });
     }

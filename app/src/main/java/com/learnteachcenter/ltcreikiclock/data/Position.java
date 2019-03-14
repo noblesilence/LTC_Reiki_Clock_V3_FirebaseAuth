@@ -84,6 +84,8 @@ public class Position implements Serializable {
         return reikiId;
     }
 
+    public void setReikiId(String reikiId) { this.reikiId = reikiId; }
+
     public String getId() { return positionId; }
     public void setId(String positionId) { this.positionId = positionId; }
 
