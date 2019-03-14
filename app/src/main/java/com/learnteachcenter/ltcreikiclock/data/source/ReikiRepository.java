@@ -63,9 +63,13 @@ public class ReikiRepository {
         Log.d(TAG, "getReikisFromApi: " + BuildConfig.URL);
         return apiInterface.getSampleReikis()
                 .doOnNext(reikis -> {
-                    Log.e(TAG, "getReikisFromApi: " + reikis.size());
+                    Log.e(TAG, "getReikisFromApi: " + reikis);
                     for(Reiki reiki:reikis) {
                         reikiDao.insertReiki(reiki);
+
+                        Log.d(TAG, "position 0 title: " + reiki.getPositions().get(0).getTitle());
+
+                        // TODO: insert each position as well
                     }
                 });
     }

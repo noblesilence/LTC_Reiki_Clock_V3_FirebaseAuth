@@ -1,9 +1,10 @@
 package com.learnteachcenter.ltcreikiclock.dependencyinjection
 
 import com.learnteachcenter.ltcreikiclock.Utils
+import com.learnteachcenter.ltcreikiclock.data.Position
+import com.learnteachcenter.ltcreikiclock.data.Reiki
 import com.learnteachcenter.ltcreikiclock.data.source.remote.ApiInterface
-import com.squareup.moshi.KotlinJsonAdapterFactory
-import com.squareup.moshi.Moshi
+import com.squareup.moshi.*
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -11,6 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.Retrofit.Builder
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.lang.reflect.Type
 import javax.inject.Singleton
 
 @Module
@@ -22,7 +24,11 @@ class NetModule (private val baseUrl: String) {
 
     @Provides
     @Singleton
-    fun providesMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    fun providesMoshi(): Moshi {
+        return Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+    }
 
     @Provides
     @Singleton
@@ -38,6 +44,4 @@ class NetModule (private val baseUrl: String) {
     fun providesApiInterface(retrofit: Retrofit): ApiInterface = retrofit.create(
             ApiInterface::class.java
     )
-
-
 }

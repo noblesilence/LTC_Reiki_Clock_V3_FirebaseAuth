@@ -4,6 +4,7 @@ package com.learnteachcenter.ltcreikiclock.data;
  * Created by aye2m on 10/17/17.
  */
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
@@ -11,6 +12,9 @@ import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.squareup.moshi.Json;
+
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -28,20 +32,36 @@ import java.util.UUID;
  *
  */
 
-@Entity(foreignKeys = @ForeignKey(
+@Entity(
+        tableName="Position",
+        foreignKeys = @ForeignKey(
         entity = Reiki.class,
         parentColumns = "id",
         childColumns = "reikiId",
         onDelete = ForeignKey.CASCADE))
-public class Position {
+public class Position implements Serializable {
+    @NonNull
+    @Json(name="_id")
+    @PrimaryKey
+    @ColumnInfo(name="positionId", index = true)
+    public String positionId; // Primary Key
+
+    @Json(name="seqNo")
+    @ColumnInfo(name="seqNo")
     int seqNo;  // To remember the item's position on the list. Will change when user reorders the list.
+
     String reikiId; // Foreign Key
 
-    @NonNull
-    @PrimaryKey public String positionId; // Primary Key
+    @Json(name="title")
+    @ColumnInfo(name="title")
     String title;
+
+    @Json(name="duration")
+    @ColumnInfo(name="duration")
     String duration;
-    @Ignore long durationSeconds;
+
+    @Ignore
+    long durationSeconds;
 
     public Position(String reikiId, int seqNo, String title, String duration) {
         this.reikiId = reikiId;
