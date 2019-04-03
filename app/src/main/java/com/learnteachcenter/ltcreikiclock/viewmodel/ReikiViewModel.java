@@ -18,8 +18,8 @@
 
 package com.learnteachcenter.ltcreikiclock.viewmodel;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
 import com.learnteachcenter.ltcreikiclock.data.source.ReikiRepository;

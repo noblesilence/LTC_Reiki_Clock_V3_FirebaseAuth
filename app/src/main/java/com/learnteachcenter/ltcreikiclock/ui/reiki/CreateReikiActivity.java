@@ -1,13 +1,14 @@
 package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
 import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
+
+import androidx.fragment.app.FragmentManager;
 
 public class CreateReikiActivity extends BaseActivity {
 

@@ -62,6 +62,7 @@ package com.learnteachcenter.ltcreikiclock;
 
 import android.app.Application;
 
+import com.google.firebase.FirebaseApp;
 import com.learnteachcenter.ltcreikiclock.dependencyinjection.ApplicationComponent;
 import com.learnteachcenter.ltcreikiclock.dependencyinjection.ApplicationModule;
 import com.learnteachcenter.ltcreikiclock.dependencyinjection.DaggerApplicationComponent;
@@ -81,6 +82,8 @@ public class ReikiApplication extends Application {
                 .roomModule(new RoomModule(this))
                 .netModule(new NetModule(BuildConfig.URL))
                 .build();
+
+        FirebaseApp.initializeApp(this);
 
     }
 

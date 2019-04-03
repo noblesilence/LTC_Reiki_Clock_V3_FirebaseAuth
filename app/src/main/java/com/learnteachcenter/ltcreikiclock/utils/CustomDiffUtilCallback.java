@@ -1,10 +1,10 @@
 package com.learnteachcenter.ltcreikiclock.utils;
 
-import android.support.v7.util.DiffUtil;
-
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.DiffUtil;
 
 /**
  * Created by R_KAY on 11/29/2017.

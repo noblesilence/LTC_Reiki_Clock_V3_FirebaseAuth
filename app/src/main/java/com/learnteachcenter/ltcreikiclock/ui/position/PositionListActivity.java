@@ -1,9 +1,12 @@
 package com.learnteachcenter.ltcreikiclock.ui.position;
 
 import android.app.Activity;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,16 +14,14 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
+import androidx.annotation.Nullable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,7 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.learnteachcenter.ltcreikiclock.Constants;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Position;
@@ -190,11 +191,8 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
             }
         });
 
-        // Add
+        // Add button
         setupAddButtonBasedOnProductFlavor(fabAdd);
-
-        // Ad
-        setupAdBasedOnProductFlavor();
 
         // Setup RecyclerView
         // Set up and subscribe (observe) to the ViewModel
@@ -214,34 +212,12 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
     }
 
     private void setupAddButtonBasedOnProductFlavor(FloatingActionButton fabAdd){
-        if(Constants.type == Constants.Type.PAID) {
-            fabAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startCreatePositionActivity(listOfPositions.size() + 1);
-                }
-            });
-        }
-        else {
-            fabAdd.hide();
-        }
-    }
-
-    // Set up Ad based on product flavor
-    private void setupAdBasedOnProductFlavor() {
-        if(Constants.type == Constants.Type.PAID) {
-            adLayout.setVisibility(View.GONE);
-        }
-        else {
-            adLayout.setVisibility(View.VISIBLE);
-            btnBuy = findViewById(R.id.btn_buy);
-            btnBuy.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBuyClick();
-                }
-            });
-        }
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startCreatePositionActivity(listOfPositions.size() + 1);
+            }
+        });
     }
 
     private void onBuyClick() {
@@ -255,14 +231,9 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
     }
 
     private void showHideAddButtonBasedOnProductFlavor(FloatingActionButton fabAdd, int visibility) {
-        if(Constants.type == Constants.Type.PAID) {
-            if(visibility == View.VISIBLE) {
-                fabAdd.show();
-            } else {
-                fabAdd.hide();
-            }
-        }
-        else {
+        if(visibility == View.VISIBLE) {
+            fabAdd.show();
+        } else {
             fabAdd.hide();
         }
     }

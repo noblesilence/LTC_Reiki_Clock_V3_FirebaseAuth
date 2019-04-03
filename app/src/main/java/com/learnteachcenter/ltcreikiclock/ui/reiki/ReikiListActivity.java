@@ -1,15 +1,16 @@
 package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 import android.content.DialogInterface;
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
 import com.crashlytics.android.Crashlytics;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentManager;
 import io.fabric.sdk.android.Fabric;
 
 public class ReikiListActivity extends BaseActivity {

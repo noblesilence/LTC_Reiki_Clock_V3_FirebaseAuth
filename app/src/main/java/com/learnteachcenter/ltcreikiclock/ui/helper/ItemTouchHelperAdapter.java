@@ -1,7 +1,5 @@
 package com.learnteachcenter.ltcreikiclock.ui.helper;
 
-import android.support.v7.widget.RecyclerView;
-
 /**
  * Created by aye2m on 3/23/16.
  *

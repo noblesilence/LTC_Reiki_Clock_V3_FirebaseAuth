@@ -15,18 +15,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.reiki.ReikiListActivity"
-                    android:launchMode="singleTop">
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="248192f03d39946b6fea620a627f288f58828ecf"
+            />
+
+        <activity android:name=".ui.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="248192f03d39946b6fea620a627f288f58828ecf"
-            />
+
+        <activity android:name=".auth.LoginActivity">
+        </activity>
+
+        <activity android:name=".ui.reiki.ReikiListActivity"
+                    android:launchMode="singleTop">
+        </activity>
+
         <activity android:name=".ui.position.PositionListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">

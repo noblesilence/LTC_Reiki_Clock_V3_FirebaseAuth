@@ -1,6 +1,6 @@
 package com.learnteachcenter.ltcreikiclock.data.source;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import android.util.Log;
 
 import com.learnteachcenter.ltcreikiclock.BuildConfig;

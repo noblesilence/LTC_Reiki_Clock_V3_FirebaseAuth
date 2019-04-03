@@ -20,6 +20,8 @@ package com.learnteachcenter.ltcreikiclock.dependencyinjection;
 
 import android.app.Application;
 
+import com.learnteachcenter.ltcreikiclock.auth.LoginActivity;
+import com.learnteachcenter.ltcreikiclock.ui.SplashActivity;
 import com.learnteachcenter.ltcreikiclock.ui.position.CreatePositionFragment;
 import com.learnteachcenter.ltcreikiclock.ui.position.PositionListActivity;
 import com.learnteachcenter.ltcreikiclock.ui.reiki.CreateReikiFragment;
@@ -43,6 +45,8 @@ import dagger.Component;
 })
 public interface ApplicationComponent {
 
+    void inject(SplashActivity splashActivity);
+    void inject(LoginActivity loginActivity);
     void inject(ReikiListFragment reikiListFragment);
     void inject(CreateReikiFragment createReikiFragment);
     void inject(CreatePositionFragment createPositionFragment);
