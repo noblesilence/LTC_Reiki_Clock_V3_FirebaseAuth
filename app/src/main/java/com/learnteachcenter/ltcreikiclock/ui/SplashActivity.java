@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.auth.LoginActivity;
+import com.learnteachcenter.ltcreikiclock.ui.reiki.ReikiListActivity;
 
 public class SplashActivity extends BaseActivity {
 
@@ -28,9 +29,14 @@ public class SplashActivity extends BaseActivity {
         if (mAuth.getCurrentUser() != null) {
             // already signed in
             FirebaseUser user = mAuth.getCurrentUser();
-            Log.d(TAG, "current user email is " + user.getEmail());
+            Log.d(TAG, "[Splash Activity] current user email is " + user.getEmail());
+
+            Intent i = new Intent(this, ReikiListActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
         } else {
-            Log.d(TAG, "no current user");
+            Log.d(TAG, "[Splash Activity] no current user");
             Intent i = new Intent(this, LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

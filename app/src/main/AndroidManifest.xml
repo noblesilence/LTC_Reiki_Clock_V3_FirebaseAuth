@@ -16,11 +16,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="248192f03d39946b6fea620a627f288f58828ecf"
-            />
-
         <activity android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -29,6 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="248192f03d39946b6fea620a627f288f58828ecf"
+            />
 
         <activity android:name=".auth.LoginActivity">
         </activity>

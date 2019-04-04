@@ -3,6 +3,7 @@ package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 import android.app.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -26,6 +27,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +38,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
@@ -167,6 +172,22 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
 
         FloatingActionButton fabAdd = v.findViewById(R.id.fab_create_new_reiki);
         setupAddButtonBasedOnProductFlavor(fabAdd);
+
+        Button btnLogout = v.findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "on log out click");
+                AuthUI.getInstance()
+                        .signOut(getContext())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Log.d(TAG, "sign out complete");
+                                // redirect to Login page
+                            }
+                        });
+            }
+        });
 
 //        AdView adView = v.findViewById(R.id.adView);
 //        setupAdBasedOnProductFlavor(adView);
