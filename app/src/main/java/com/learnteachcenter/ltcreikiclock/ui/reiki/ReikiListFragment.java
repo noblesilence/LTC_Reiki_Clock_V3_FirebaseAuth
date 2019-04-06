@@ -38,12 +38,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.learnteachcenter.ltcreikiclock.R;
 import com.learnteachcenter.ltcreikiclock.ReikiApplication;
+import com.learnteachcenter.ltcreikiclock.auth.LoginActivity;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
 import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperAdapter;
 import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperViewHolder;
@@ -178,14 +179,9 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "on log out click");
-                AuthUI.getInstance()
-                        .signOut(getContext())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Log.d(TAG, "sign out complete");
-                                // redirect to Login page
-                            }
-                        });
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                startActivity(i);
             }
         });
 

@@ -17,11 +17,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'io.fabric'
-apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'io.fabric'
 
 repositories {
-    maven { url 'https://maven.fabric.io/public'}
+//    maven { url 'https://maven.fabric.io/public'}
     mavenCentral()
 }
 
@@ -81,13 +81,14 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Firebase Auth
+    implementation 'com.google.firebase:firebase-auth:16.2.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
-    // Firebase
-    implementation 'com.google.firebase:firebase-core:16.0.8'
-    implementation 'com.firebaseui:firebase-ui-auth:4.3.2'
 
     //D2
     implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
@@ -136,5 +137,3 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'androidx.multidex:multidex:2.0.0'
 }
-
-apply plugin: 'com.google.gms.google-services'
