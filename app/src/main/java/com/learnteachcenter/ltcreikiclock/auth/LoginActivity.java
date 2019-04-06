@@ -41,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Reiki";
 
     FirebaseAuth mAuth;
+    String mUserDisplayName = "";
+    String mUserEmail = "";
+    String mIdToken = "";
 
     GoogleSignInClient mGoogleSignInClient;
 
@@ -104,11 +107,34 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            // TODO: save the idToken and connect to the backend
-
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
+
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            // TODO: save the idToken and connect to the backend
+
+                            mUserDisplayName = user.getDisplayName();
+                            mUserEmail = user.getEmail();
+                            Log.d(TAG, "Name: " + mUserDisplayName);
+                            Log.d(TAG, "Email: " + mUserEmail);
+
+                            user.getIdToken(true)
+                                    .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                                        @Override
+                                        public void onComplete(Task<GetTokenResult> task) {
+                                            if (task.isSuccessful()) {
+                                                mIdToken = task.getResult().getToken();
+
+                                                // Save the token
+
+                                                Log.d(TAG, "ID Token: " + mIdToken);
+                                            } else {
+                                                Log.d(TAG, "Unable to get ID Token");
+                                            }
+                                        }
+                                    });
+
 
                             Intent i = new Intent(getApplicationContext(), ReikiListActivity.class);
                             startActivity(i);
@@ -121,8 +147,6 @@ public class LoginActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "User logged in failed", Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
     }
