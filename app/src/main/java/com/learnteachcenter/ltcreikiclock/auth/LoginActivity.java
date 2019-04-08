@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Reiki";
 
     FirebaseAuth mAuth;
+    SessionManager mSession;
     String mUserDisplayName = "";
     String mUserEmail = "";
     String mIdToken = "";
@@ -56,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("502909142533-a1fgf6nuot7iooqlvnsibkoqo5rihlbm.apps.googleusercontent.com")
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
@@ -116,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             mUserDisplayName = user.getDisplayName();
                             mUserEmail = user.getEmail();
+
                             Log.d(TAG, "Name: " + mUserDisplayName);
                             Log.d(TAG, "Email: " + mUserEmail);
 
@@ -127,25 +129,26 @@ public class LoginActivity extends AppCompatActivity {
                                                 mIdToken = task.getResult().getToken();
 
                                                 // Save the token
+                                                mSession = new SessionManager(getApplicationContext());
+                                                mSession.createLoginSession(mUserDisplayName,
+                                                        mUserEmail,
+                                                        mIdToken);
+
+                                                mSession.checkLoginAndRedirect();
+                                                finish();
 
                                                 Log.d(TAG, "ID Token: " + mIdToken);
                                             } else {
-                                                Log.d(TAG, "Unable to get ID Token");
+                                                Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
 
-
-                            Intent i = new Intent(getApplicationContext(), ReikiListActivity.class);
-                            startActivity(i);
-                            finish();
-
-                            Toast.makeText(getApplicationContext(), "User logged in successfully", Toast.LENGTH_SHORT).show();
-
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "User logged in failed", Toast.LENGTH_SHORT).show();
+                            Log.w(TAG, "login failure: ", task.getException());
+
+                            Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

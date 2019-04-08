@@ -5,6 +5,8 @@
     <string name="action_delete_item">Delete Item? This can\'t be undone.</string>
     <string name="action_delete">PROCEED</string>
 
+    <string name="default_web_client_id">502909142533-a1fgf6nuot7iooqlvnsibkoqo5rihlbm.apps.googleusercontent.com</string>
+
     <!-- used as tags for shared element transitions -->
     <string name="transition_drawable">drawable</string>
     <string name="transition_message">message</string>
