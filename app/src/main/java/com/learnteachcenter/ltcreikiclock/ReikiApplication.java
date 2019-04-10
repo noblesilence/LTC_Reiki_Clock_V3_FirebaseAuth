@@ -80,7 +80,7 @@ public class ReikiApplication extends Application {
                 .builder()
                 .applicationModule(new ApplicationModule(this))
                 .roomModule(new RoomModule(this))
-                .netModule(new NetModule(BuildConfig.URL))
+                .netModule(new NetModule(BuildConfig.URL, getApplicationContext()))
                 .build();
 
         FirebaseApp.initializeApp(this);

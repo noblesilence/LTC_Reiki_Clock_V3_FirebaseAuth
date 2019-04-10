@@ -38,6 +38,11 @@ public class SessionManager {
         Log.d(TAG, "Token: " + token);
     }
 
+    public String getToken(){
+        String token = pref.getString(KEY_TOKEN, null);
+        return token;
+    }
+
     /**
      * Create login session
      */
