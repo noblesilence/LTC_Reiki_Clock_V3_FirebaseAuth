@@ -9,7 +9,7 @@
     android:background="@color/colorTransparentBlack"
     tools:context=".ui.position.PositionListActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tlb_position_list_activity"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
@@ -21,7 +21,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_stop"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -37,7 +37,7 @@
         app:layout_constraintRight_toLeftOf="@id/fab_play_pause"
         app:rippleColor="@color/colorTransparentBlack"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_play_pause"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -53,7 +53,7 @@
         app:layout_constraintRight_toLeftOf="@id/fab_add"
         app:rippleColor="@color/colorTransparentBlack"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:rippleColor="@color/colorTransparentBlack"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_position_list_activity"
         android:layout_width="0dp"
         android:layout_height="0dp"

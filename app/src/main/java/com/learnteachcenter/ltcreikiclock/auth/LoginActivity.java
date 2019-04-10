@@ -113,8 +113,6 @@ public class LoginActivity extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            // TODO: save the idToken and connect to the backend
-
                             mUserDisplayName = user.getDisplayName();
                             mUserEmail = user.getEmail();
 

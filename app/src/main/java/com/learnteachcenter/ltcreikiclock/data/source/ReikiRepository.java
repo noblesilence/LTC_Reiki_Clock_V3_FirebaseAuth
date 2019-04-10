@@ -61,21 +61,28 @@ public class ReikiRepository {
 
     private Observable<List<Reiki>> getReikisFromApi(){
         Log.d(TAG, "getReikisFromApi: " + BuildConfig.URL);
-        return apiInterface.getSampleReikis()
+        return apiInterface.getReikis()
                 .doOnNext(reikis -> {
                     Log.e(TAG, "getReikisFromApi: " + reikis);
-                    for(Reiki reiki:reikis) {
 
-                        // Insert each Reiki
-                        reikiDao.insertReiki(reiki);
+                    if(reikis.size() > 0) {
+                        for(Reiki reiki:reikis) {
 
-                        // Insert each Position
-                        List<Position> positions = reiki.getPositions();
-                        for(Position position: positions){
-                            position.setReikiId(reiki.getId());
-                            reikiDao.insertPosition(position);
+                            // Insert each Reiki
+                            reikiDao.insertReiki(reiki);
+
+                            // Insert each Position
+                            List<Position> positions = reiki.getPositions();
+                            for(Position position: positions){
+                                position.setReikiId(reiki.getId());
+                                reikiDao.insertPosition(position);
+                            }
                         }
                     }
+                    else {
+                        Log.d(TAG, "No reikis returned from the API!!!");
+                    }
+
                 });
     }
 

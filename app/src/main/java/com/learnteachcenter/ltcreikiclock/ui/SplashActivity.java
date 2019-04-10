@@ -31,41 +31,5 @@ public class SplashActivity extends BaseActivity {
         // Check session
         mSession = new SessionManager(getApplicationContext());
         mSession.checkLoginAndRedirect();
-
-        // TODO: Remove the code below
-
-        // Initialize Firebase Auth
-//        mAuth = FirebaseAuth.getInstance();
-//
-//        if (mAuth.getCurrentUser() != null) {
-//            // already signed in
-//            FirebaseUser user = mAuth.getCurrentUser();
-//            String name = user.getDisplayName();
-//            String email = user.getEmail();
-//            user.getIdToken(true)
-//                    .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<GetTokenResult> task) {
-//                            if(task.isSuccessful()) {
-//                                String idToken = task.getResult().getToken();
-//                            } else {
-//
-//                            }
-//                        }
-//                    });
-//
-//            Log.d(TAG, "[Splash Activity] current user email is " + user.getEmail());
-//
-//            Intent i = new Intent(this, ReikiListActivity.class);
-//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(i);
-//        } else {
-//            Log.d(TAG, "[Splash Activity] no current user");
-//            Intent i = new Intent(this, LoginActivity.class);
-//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(i);
-//        }
     }
 }

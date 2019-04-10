@@ -56,6 +56,7 @@ android {
     buildTypes {
         debug {
             buildConfigField 'String', 'URL', '"https://ov0feyufo0.execute-api.us-east-1.amazonaws.com/latest/api/"'
+            //buildConfigField 'String', 'URL', '"http://127.0.0.1:3000/api/"' <= Not working!!!
         }
         release {
             buildConfigField 'String', 'URL', '"https://ov0feyufo0.execute-api.us-east-1.amazonaws.com/latest/api/"'
