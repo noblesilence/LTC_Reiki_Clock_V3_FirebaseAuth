@@ -53,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // TODO: move this to signIn method?
+
         mAuth = FirebaseAuth.getInstance();
 
         // Configure Google Sign In
@@ -132,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         mUserEmail,
                                                         mIdToken);
 
-                                                mSession.checkLoginAndRedirect();
+                                                mSession.redirectToMain();
                                                 finish();
 
                                                 Log.d(TAG, "ID Token: " + mIdToken);
