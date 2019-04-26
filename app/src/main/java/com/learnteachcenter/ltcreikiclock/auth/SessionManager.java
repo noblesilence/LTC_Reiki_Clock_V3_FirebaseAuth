@@ -37,14 +37,6 @@ public class SessionManager {
         this.mContext = context;
         pref = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
-
-//        String name = pref.getString(KEY_NAME, null);
-//        String email = pref.getString(KEY_EMAIL, null);
-//        String token = pref.getString(KEY_TOKEN, null);
-//
-//        Log.d(TAG, "Name: " + name);
-//        Log.d(TAG, "Email: " + email);
-//        Log.d(TAG, "Token: " + token);
     }
 
     public String getToken(){
