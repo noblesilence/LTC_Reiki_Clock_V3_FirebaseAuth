@@ -36,7 +36,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.ReikiApplication;
+import com.learnteachcenter.ltcreikiclock.application.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Position;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
 import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperAdapter;
@@ -45,7 +45,7 @@ import com.learnteachcenter.ltcreikiclock.ui.helper.OnStartDragListener;
 import com.learnteachcenter.ltcreikiclock.ui.helper.SimpleItemTouchHelperCallback;
 import com.learnteachcenter.ltcreikiclock.ui.reiki.CreateReikiActivity;
 import com.learnteachcenter.ltcreikiclock.ui.reiki.ReikiListActivity;
-import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
+import com.learnteachcenter.ltcreikiclock.ui.base.BaseActivity;
 import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 import com.learnteachcenter.ltcreikiclock.viewmodel.ReikiCollectionViewModel;
 
@@ -134,7 +134,7 @@ public class PositionListActivity extends BaseActivity implements OnStartDragLis
         setContentView(R.layout.fragment_position_list);
 
         ((ReikiApplication) getApplication())
-                .getApplicationComponent()
+                .getAppComponent()
                 .inject(this);  // Dependency Injection
 
         processIntentExtras();  // Process data passed from the previous Activity

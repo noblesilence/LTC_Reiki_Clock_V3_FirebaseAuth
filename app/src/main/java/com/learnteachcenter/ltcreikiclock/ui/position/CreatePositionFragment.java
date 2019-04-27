@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.ReikiApplication;
+import com.learnteachcenter.ltcreikiclock.application.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Position;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
 import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
@@ -77,7 +77,7 @@ public class CreatePositionFragment extends Fragment {
         setRetainInstance(true);
 
         ((ReikiApplication) getActivity().getApplication())
-                .getApplicationComponent()
+                .getAppComponent()
                 .inject(this);
 
         Bundle args = getArguments();

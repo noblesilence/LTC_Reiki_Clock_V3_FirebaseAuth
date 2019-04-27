@@ -3,7 +3,6 @@ package com.learnteachcenter.ltcreikiclock.ui.reiki;
 
 import android.app.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -38,13 +37,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.ReikiApplication;
-import com.learnteachcenter.ltcreikiclock.auth.LoginActivity;
+import com.learnteachcenter.ltcreikiclock.application.ReikiApplication;
+import com.learnteachcenter.ltcreikiclock.ui.login.LoginActivity;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
 import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperAdapter;
 import com.learnteachcenter.ltcreikiclock.ui.helper.ItemTouchHelperViewHolder;
@@ -98,7 +95,7 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
         super.onCreate(savedInstanceState);
 
         ((ReikiApplication) getActivity().getApplication())
-                .getApplicationComponent()
+                .getAppComponent()
                 .inject(this);
     }
 

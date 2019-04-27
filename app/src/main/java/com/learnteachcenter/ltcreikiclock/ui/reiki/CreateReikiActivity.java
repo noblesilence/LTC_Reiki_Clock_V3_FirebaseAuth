@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.ui.BaseActivity;
+import com.learnteachcenter.ltcreikiclock.ui.base.BaseActivity;
 import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
 
 import androidx.fragment.app.FragmentManager;

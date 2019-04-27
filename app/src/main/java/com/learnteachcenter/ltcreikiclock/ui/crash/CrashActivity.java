@@ -1,6 +1,6 @@
 //https://trivedihardik.wordpress.com/2011/08/20/how-to-avoid-force-close-error-in-android/
 
-package com.learnteachcenter.ltcreikiclock.ui;
+package com.learnteachcenter.ltcreikiclock.ui.crash;
 
 import android.app.Activity;
 import android.os.Bundle;

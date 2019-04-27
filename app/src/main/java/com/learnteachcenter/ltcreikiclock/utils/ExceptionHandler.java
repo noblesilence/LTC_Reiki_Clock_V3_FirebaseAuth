@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 
-import com.learnteachcenter.ltcreikiclock.ui.CrashActivity;
+import com.learnteachcenter.ltcreikiclock.ui.crash.CrashActivity;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

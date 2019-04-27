@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.learnteachcenter.ltcreikiclock.R;
-import com.learnteachcenter.ltcreikiclock.ReikiApplication;
+import com.learnteachcenter.ltcreikiclock.application.ReikiApplication;
 import com.learnteachcenter.ltcreikiclock.data.Reiki;
 import com.learnteachcenter.ltcreikiclock.ui.position.PositionListActivity;
 import com.learnteachcenter.ltcreikiclock.utils.IntentExtraNames;
@@ -65,7 +65,7 @@ public class CreateReikiFragment extends Fragment {
         setRetainInstance(true);
 
         ((ReikiApplication) getActivity().getApplication())
-                .getApplicationComponent()
+                .getAppComponent()
                 .inject(this);
     }
 
