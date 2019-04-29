@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -14,6 +15,7 @@ import com.learnteachcenter.ltcreikiclock.R
 import com.learnteachcenter.ltcreikiclock.authentication.FirebaseAuthenticationInterface
 import androidx.appcompat.app.AppCompatActivity
 import com.learnteachcenter.ltcreikiclock.application.ReikiApplication
+import com.learnteachcenter.ltcreikiclock.ui.reiki.ReikiListActivity
 import javax.inject.Inject
 
 /**
@@ -53,23 +55,24 @@ class LoginActivity : AppCompatActivity() {
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
-                firebaseAuth!!.createGoogleUser(account!!.idToken!!) { success ->
+                firebaseAuth!!.signInWithGoogle(account!!.idToken!!) { success ->
                     if (success) {
-                        Log.d(TAG, "Successfully created user")
+                        Log.d(TAG, "Google sign in successful")
+                        val i = Intent(applicationContext, ReikiListActivity::class.java)
+                        startActivity(i)
                     } else {
-                        Log.d(TAG, "Failed to create user")
+                        Log.d(TAG, "Google sign in failed")
+
+                        Toast.makeText(applicationContext, "Sign in failed. Please try again.", Toast.LENGTH_SHORT)
                     }
                 }
             } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
-                // ...
             }
 
         }
@@ -80,4 +83,3 @@ class LoginActivity : AppCompatActivity() {
         private val TAG = "Reiki"
     }
 }
-

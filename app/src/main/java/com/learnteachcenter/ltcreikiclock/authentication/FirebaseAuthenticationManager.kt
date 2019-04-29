@@ -10,7 +10,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.GetTokenResult
 
 class FirebaseAuthenticationManager @Inject constructor(private val authenication: FirebaseAuth) : FirebaseAuthenticationInterface {
-    override fun createGoogleUser(idToken: String, onResult: (Boolean) -> Unit) {
+    override fun signInWithGoogle(idToken: String, onResult: (Boolean) -> Unit) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         authenication.signInWithCredential(credential)
         .addOnCompleteListener(object : OnCompleteListener<AuthResult> {
@@ -26,19 +26,8 @@ class FirebaseAuthenticationManager @Inject constructor(private val authenicatio
         })
     }
 
-    override fun getIdToken(): String? {
-        var idToken: String? = null
-
-        if(authenication.currentUser != null) {
-            authenication.currentUser!!.getIdToken(true)
-                    .addOnCompleteListener(OnCompleteListener<GetTokenResult> { task ->
-                        if(task.isSuccessful) {
-                            idToken = task.result!!.token
-                        }
-                    })
-        }
-
-        return idToken
+    override fun isSignedIn(): Boolean {
+        return (authenication.currentUser != null)
     }
 
     override fun getUserId(): String = authenication.currentUser?.uid ?: ""

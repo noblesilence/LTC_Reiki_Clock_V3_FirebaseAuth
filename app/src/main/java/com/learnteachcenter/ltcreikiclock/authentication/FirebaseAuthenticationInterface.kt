@@ -1,10 +1,12 @@
 package com.learnteachcenter.ltcreikiclock.authentication
 
+import com.google.android.gms.tasks.Task
+
 interface FirebaseAuthenticationInterface {
 
-    fun createGoogleUser(idToken: String, onResult: (Boolean) -> Unit)
+    fun signInWithGoogle(idToken: String, onResult: (Boolean) -> Unit)
 
-    fun getIdToken(): String?
+    fun isSignedIn(): Boolean
 
     fun getUserId(): String
 

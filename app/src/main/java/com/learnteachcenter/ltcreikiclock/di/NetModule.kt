@@ -1,18 +1,24 @@
 package com.learnteachcenter.ltcreikiclock.di
 
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GetTokenResult
 import com.learnteachcenter.ltcreikiclock.data.source.remote.ApiInterface
 import com.learnteachcenter.ltcreikiclock.authentication.FirebaseAuthenticationInterface
 import com.learnteachcenter.ltcreikiclock.authentication.FirebaseAuthenticationManager
 import com.squareup.moshi.*
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.Retrofit.Builder
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import org.reactivestreams.Subscriber
 
 // https://futurestud.io/tutorials/retrofit-2-manage-request-headers-in-okhttp-interceptor
 
@@ -30,26 +36,35 @@ class NetModule (private val baseUrl: String) {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(authentication: FirebaseAuthenticationInterface): OkHttpClient {
+    fun providesOkHttpClient(authentication: FirebaseAuth): OkHttpClient {
 
-        val token = authentication.getIdToken()
+        var token: String? = null
 
-        val httpClient = OkHttpClient.Builder()
+        if(authentication.currentUser != null) {
+            authentication.currentUser!!.getIdToken(true)
+                    .addOnCompleteListener(OnCompleteListener<GetTokenResult> { task ->
+                        if(task.isSuccessful) {
+                            token = task.result!!.token
 
-        httpClient.addInterceptor { chain ->
-            val original = chain.request()
+                            val httpClient = OkHttpClient.Builder()
 
-            // Request customization: add request headers
-            val requestBuilder = original.newBuilder()
-                    .header("Authorization", "Bearer " + token) // <-- this is the important line
+                            httpClient.addInterceptor { chain ->
+                                val original = chain.request()
 
-            val request = requestBuilder.build()
-            chain.proceed(request)
+                                // Request customization: add request headers
+                                val requestBuilder = original.newBuilder()
+                                        .header("Authorization", "Bearer " + token) // <-- this is the important line
+
+                                val request = requestBuilder.build()
+                                chain.proceed(request)
+                            }
+
+                            val client = httpClient.build()
+
+                            return client
+                        }
+                    })
         }
-
-        val client = httpClient.build()
-
-        return client
     }
 
     @Provides

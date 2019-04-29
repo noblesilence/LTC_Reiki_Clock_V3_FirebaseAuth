@@ -19,6 +19,10 @@
     <string name="reiki_stop_button">Stop Reiki</string>
     <string name="reiki_play_pause_button">Play/Pause Reiki</string>
     <string name="reiki_edit">Edit Reiki</string>
+    <string name="reikis_loading_error_title">Unable to load Reikis</string>
+    <string name="reikis_loading_error_message">Failed to load Reikis from the server.</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
     <string name="position_title">Title</string>
     <string name="position_duration">Duration (mm:ss)</string>
     <string name="position_create">Create Position</string>

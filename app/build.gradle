@@ -55,8 +55,8 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'String', 'URL', '"https://ov0feyufo0.execute-api.us-east-1.amazonaws.com/latest/api/"'
-            //buildConfigField 'String', 'URL', '"http://127.0.0.1:3000/api/"' <= Not working!!!
+            //buildConfigField 'String', 'URL', '"https://ov0feyufo0.execute-api.us-east-1.amazonaws.com/latest/api/"'
+            buildConfigField 'String', 'URL', '"http://192.168.1.44:5500/api/"'
         }
         release {
             buildConfigField 'String', 'URL', '"https://ov0feyufo0.execute-api.us-east-1.amazonaws.com/latest/api/"'
@@ -138,3 +138,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'androidx.multidex:multidex:2.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin

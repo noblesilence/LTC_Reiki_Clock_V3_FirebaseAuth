@@ -24,10 +24,10 @@ class SplashActivity : BaseActivity() {
 
         val i: Intent;
 
-        if (authentication.getIdToken() == null) {
-            i = Intent(applicationContext, LoginActivity::class.java)
-        } else {
+        if (authentication.isSignedIn()) {
             i = Intent(applicationContext, ReikiListActivity::class.java)
+        } else {
+            i = Intent(applicationContext, LoginActivity::class.java)
         }
 
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

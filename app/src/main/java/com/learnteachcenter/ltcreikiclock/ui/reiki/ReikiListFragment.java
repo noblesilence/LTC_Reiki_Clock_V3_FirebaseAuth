@@ -74,12 +74,11 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
     private CustomAdapter adapter;
     private ItemTouchHelper mItemTouchHelper;
     SimpleItemTouchHelperCallback mItemTouchHelperCallback;
-//    private AdView mAdView;
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
-    ReikiCollectionViewModel reikiCollectionViewModel;
+    private ReikiCollectionViewModel reikiCollectionViewModel;
 
     public ReikiListFragment() {
     }
@@ -132,8 +131,8 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
             public void onChanged(@Nullable String s) {
                 if(s != null) {
                     Log.d(TAG, "Error getting reikis. " + s);
-//                    Toast.makeText(this, "There is an error getting the data: " + s,
-//                            Toast.LENGTH_LONG).show();
+
+
                 }
             }
         });
@@ -182,9 +181,6 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
             }
         });
 
-//        AdView adView = v.findViewById(R.id.adView);
-//        setupAdBasedOnProductFlavor(adView);
-
         return v;
     }
 
@@ -196,19 +192,6 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
             }
         });
     }
-
-//    private void setupAdBasedOnProductFlavor(AdView adView) {
-//        if(Constants.type == Constants.Type.PAID) {
-//            adView.setVisibility(View.GONE);
-//        }
-//        else {
-//            MobileAds.initialize(getContext(), "ca-app-pub-1046951996868755~3901934187");
-//            adView.setVisibility(View.VISIBLE);
-//
-//            AdRequest adRequest = new AdRequest.Builder().build();
-//            adView.loadAd(adRequest);
-//        }
-//    }
 
     @Override
     public void onResume() {
@@ -226,7 +209,7 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
     }
 
     // Start PositionListActivity based on the given Reiki ID
-    public void startPositionListActivity(Reiki reiki, View viewRoot) {
+    private void startPositionListActivity(Reiki reiki, View viewRoot) {
         Activity container = getActivity();
         Intent i = new Intent(container, PositionListActivity.class);
         i.putExtra(IntentExtraNames.EXTRA_REIKI_ID, reiki.getId());
@@ -238,20 +221,20 @@ public class ReikiListFragment extends Fragment implements OnStartDragListener {
     }
 
     // start Create Reiki Activity
-    public void startCreateReikiActivity() {
+    private void startCreateReikiActivity() {
         Intent i = new Intent(getActivity(), CreateReikiActivity.class);
         i.putExtra(IntentExtraNames.NEW_REIKI_SEQNO, listOfReikis.size() + 1);
         startActivity(i);
     }
 
-    public void updateReikis(List<Reiki> newList) {
+    private void updateReikis(List<Reiki> newList) {
         listOfReikis.clear();
         listOfReikis.addAll(newList);
 
         adapter.notifyDataSetChanged();
     }
 
-    public void setReikis(List<Reiki> listOfReikis) {
+    private void setReikis(List<Reiki> listOfReikis) {
 
         this.listOfReikis = listOfReikis;
 

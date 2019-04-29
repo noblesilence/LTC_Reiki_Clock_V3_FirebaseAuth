@@ -23,10 +23,10 @@
             android:id="@+id/google_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:text="Text"
             android:layout_alignParentTop="true"
             android:layout_margin="10dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/ad_text"
             android:textSize="18sp" />
 
     </LinearLayout>
