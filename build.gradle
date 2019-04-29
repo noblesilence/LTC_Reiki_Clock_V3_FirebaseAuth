@@ -55,4 +55,3 @@ ext {
     rxAndroidVersion = "2.0.2"
     rxJava2Version = "2.1.0"
 }
-apply plugin: 'com.google.gms.google-services'
