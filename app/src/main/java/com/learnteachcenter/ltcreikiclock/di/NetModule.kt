@@ -34,6 +34,10 @@ class NetModule (private val baseUrl: String) {
         return FirebaseAuthenticationManager(firebaseAuth)
     }
 
+
+    // TODO: this method requires asynchronous method call getIdToken to complete
+    // before returning OkHttpClient
+    // Darel Bitsy suggests Dagger Producer and Davor Maric suggests RxJava UserSession Manager
     @Provides
     @Singleton
     fun providesOkHttpClient(authentication: FirebaseAuth): OkHttpClient {
